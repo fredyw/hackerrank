@@ -23,5 +23,8 @@ public class WhatsNextTest {
             a <<= 1;
         }
         System.out.println(Integer.toBinaryString(a));
+        System.out.println(Integer.parseInt( "1111011100111100", 2));
+        System.out.println(Integer.parseInt( "1111011101011100", 2));
+        System.out.println(Integer.parseInt("11110111001110001", 2));
     }
 }
