@@ -25,7 +25,6 @@ public class WhatsNext {
     }
 
     private static void decompress(long num) {
-        System.out.println(Long.toBinaryString(num));
         int length = 0;
         int count = 1;
         long oneOrZero = (num & 1);
@@ -47,31 +46,26 @@ public class WhatsNext {
 
     private static void whatsNext(String num) {
         long compressed = compress(num);
-        System.out.println(Long.toBinaryString(compressed));
-        long isOne = compressed & 1;
-        long copy = compressed;
-        if (isOne == 1) {
-            int shift = 0;
-            while ((copy & 1) == 1) {
-                copy >>= 1;
-                shift++;
-            }
-            compressed |= (1 << shift);
-            long mask = 1 << shift - 1;
-            compressed &= ~mask;
-            decompress(compressed);
-        } else {
-            int shift = 0;
-            while ((copy & 1) == 0) {
-                copy >>= 1;
-                shift++;
-            }
-            compressed <<= 1;
-            compressed |= 1;
-            long mask = 1 << shift + 1;
-            compressed &= ~mask;
-            decompress(compressed);
+        long result = compressed;
+        int left = 0;
+        while ((result & 1) == 0) {
+            result >>= 1;
+            left++;
         }
+        int right = left;
+        while ((result & 1) == 1) {
+            result >>= 1;
+            right++;
+        }
+        result <<= right;
+        result |= 1 << right;
+        long val = 0;
+        for (int i = 0; i < right - left - 1; i++) {
+            val <<= 1;
+            val |= 1;
+        }
+        result |= val;
+        decompress(result);
     }
 
     public static void main(String[] args) {
