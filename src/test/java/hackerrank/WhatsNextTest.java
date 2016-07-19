@@ -12,6 +12,12 @@ public class WhatsNextTest {
     }
 
     @Test
+    public void test2() throws Exception {
+        System.setIn(new FileInputStream("src/test/resources/whats-next/test2.txt"));
+        WhatsNext.main(new String[]{});
+    }
+
+    @Test
     public void test() {
         int a = 0;
         for (int i = 0; i < 5; i++) {

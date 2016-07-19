@@ -6,10 +6,10 @@ import java.util.Scanner;
  * https://www.hackerrank.com/challenges/whats-next
  */
 public class WhatsNext {
-    private static long compress(String num) {
+    private static long compress(long[] nums) {
         long x = 0;
-        for (int i = 0; i < num.length(); i++) {
-            int n = Integer.parseInt("" + num.charAt(i));
+        for (int i = 0; i < nums.length; i++) {
+            long n = nums[i];
             if (i % 2 == 0) {
                 for (int j = 0; j < n; j++) {
                     x <<= 1;
@@ -44,8 +44,8 @@ public class WhatsNext {
         System.out.println(sb.reverse().substring(1));
     }
 
-    private static void whatsNext(String num) {
-        long compressed = compress(num);
+    private static void whatsNext(long[] nums) {
+        long compressed = compress(nums);
         long result = compressed;
         int left = 0;
         while ((result & 1) == 0) {
@@ -73,11 +73,11 @@ public class WhatsNext {
         int testCases = in.nextInt();
         for (int t = 0; t < testCases; t++) {
             int length = in.nextInt();
-            String num = "";
+            long[] nums = new long[length];
             for (int i = 0; i < length; i++) {
-                num += in.next();
+                nums[i] = Long.parseLong(in.next());
             }
-            whatsNext(num);
+            whatsNext(nums);
         }
     }
 }
