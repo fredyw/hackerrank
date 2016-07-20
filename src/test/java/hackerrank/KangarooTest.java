@@ -16,4 +16,22 @@ public class KangarooTest {
         System.setIn(new FileInputStream("src/test/resources/kangaroo/test2.txt"));
         Kangaroo.main(new String[]{});
     }
+
+    @Test
+    public void test3() throws Exception {
+        System.setIn(new FileInputStream("src/test/resources/kangaroo/test3.txt"));
+        Kangaroo.main(new String[]{});
+    }
+
+    @Test
+    public void test4() throws Exception {
+        System.setIn(new FileInputStream("src/test/resources/kangaroo/test4.txt"));
+        Kangaroo.main(new String[]{});
+    }
+
+    @Test
+    public void test5() throws Exception {
+        System.setIn(new FileInputStream("src/test/resources/kangaroo/test5.txt"));
+        Kangaroo.main(new String[]{});
+    }
 }
