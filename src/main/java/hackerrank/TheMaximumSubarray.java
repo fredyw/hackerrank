@@ -6,12 +6,14 @@ import java.util.Scanner;
  * https://www.hackerrank.com/challenges/maxsubarray
  */
 public class TheMaximumSubarray {
-    private static void maxSubarray(int[] nums) {
-        int nonContiguous = nums[0];
+    private static int nonContiguousMaxSubarray(int[] nums) {
+        int max = nums[0];
         for (int i = 1; i < nums.length; i++) {
-            nonContiguous = Math.max(nonContiguous, nonContiguous + nums[i]);
+            int tmp = max;
+            max = Math.max(max, nums[i]);
+            max = Math.max(max, tmp + nums[i]);
         }
-        System.out.println(contiguousMaxSubarray(nums) + " " + nonContiguous);
+        return max;
     }
 
     private static int contiguousMaxSubarray(int[] nums) {
@@ -36,7 +38,7 @@ public class TheMaximumSubarray {
             for (int i = 0; i < n; i++) {
                 nums[i] = in.nextInt();
             }
-            maxSubarray(nums);
+            System.out.println(contiguousMaxSubarray(nums) + " " + nonContiguousMaxSubarray(nums));
         }
     }
 }

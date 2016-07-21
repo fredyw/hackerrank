@@ -16,4 +16,10 @@ public class TheMaximumSubarrayTest {
         System.setIn(new FileInputStream("src/test/resources/the-maximum-subarray/test2.txt"));
         TheMaximumSubarray.main(new String[]{});
     }
+
+    @Test
+    public void test3() throws Exception {
+        System.setIn(new FileInputStream("src/test/resources/the-maximum-subarray/test3.txt"));
+        TheMaximumSubarray.main(new String[]{});
+    }
 }
