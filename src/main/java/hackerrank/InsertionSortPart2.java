@@ -7,9 +7,21 @@ import java.util.Scanner;
  */
 public class InsertionSortPart2 {
     public static void insertionSortPart2(int[] ar) {
-        
+        for (int i = 1; i < ar.length; i++) {
+            int j = i;
+            while (j >= 1 && ar[j] < ar[j - 1]) {
+                swap(ar, j, j - 1);
+                j--;
+            }
+            printArray(ar);
+        }
     }
 
+    private static void swap(int[] ar, int i, int j) {
+        int tmp = ar[i];
+        ar[i] = ar[j];
+        ar[j] = tmp;
+    }
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
