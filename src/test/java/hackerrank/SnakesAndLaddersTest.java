@@ -10,4 +10,10 @@ public class SnakesAndLaddersTest {
         System.setIn(new FileInputStream("src/test/resources/snakes-and-ladders/test1.txt"));
         SnakesAndLadders.main(new String[]{});
     }
+
+    @Test
+    public void test2() throws Exception {
+        System.setIn(new FileInputStream("src/test/resources/snakes-and-ladders/test2.txt"));
+        SnakesAndLadders.main(new String[]{});
+    }
 }
