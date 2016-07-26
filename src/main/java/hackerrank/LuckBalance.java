@@ -18,7 +18,7 @@ public class LuckBalance {
         }
         Collections.sort(importantList, (a, b) -> b.compareTo(a));
         int idx = 0;
-        for (; idx < k; idx++) {
+        for (; idx < k && idx < importantList.size(); idx++) {
             balance += importantList.get(idx);
         }
         for (; idx < importantList.size(); idx++) {

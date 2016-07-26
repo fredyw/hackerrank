@@ -10,4 +10,10 @@ public class LuckBalanceTest {
         System.setIn(new FileInputStream("src/test/resources/luck-balance/test1.txt"));
         LuckBalance.main(new String[]{});
     }
+
+    @Test
+    public void test2() throws Exception {
+        System.setIn(new FileInputStream("src/test/resources/luck-balance/test2.txt"));
+        LuckBalance.main(new String[]{});
+    }
 }
