@@ -19,7 +19,13 @@ public class BeautifyingBinaryStringTest {
 
     @Test
     public void test3() throws Exception {
-        System.setIn(new FileInputStream("src/test/resources/beautifying-binary-string/test2.txt"));
+        System.setIn(new FileInputStream("src/test/resources/beautifying-binary-string/test3.txt"));
+        BeautifyingBinaryString.main(new String[]{});
+    }
+
+    @Test
+    public void test4() throws Exception {
+        System.setIn(new FileInputStream("src/test/resources/beautifying-binary-string/test4.txt"));
         BeautifyingBinaryString.main(new String[]{});
     }
 }
