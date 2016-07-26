@@ -38,12 +38,30 @@ public class SnakesAndLadders {
         }
     }
 
-    private static int snakesAndLadders(Graph graph) {
+    private static int snakesAndLadders(Graph graph, Map<Integer, Integer> snakesOrLadders) {
         Map<Integer, Integer> paths = shortestPath(graph);
-        int count = -1;
-        Integer node = paths.get(100); // target
+        List<Integer> shortestPath = new ArrayList<>();
+        int target = 100;
+        shortestPath.add(target);
+        Integer node = paths.get(target); // target
         while (node != null) {
+            shortestPath.add(node);
             node = paths.get(node);
+        }
+        Collections.reverse(shortestPath);
+        if (shortestPath.size() == 1) {
+            return -1;
+        }
+
+        int count = 0;
+        for (int i = 0; i < shortestPath.size() - 1; i++) {
+            Integer current = shortestPath.get(i);
+            Integer next = shortestPath.get(i + 1);
+            if (snakesOrLadders.containsKey(current)) {
+                if (snakesOrLadders.get(current) == next) {
+                    continue;
+                }
+            }
             count++;
         }
         return count;
@@ -91,22 +109,25 @@ public class SnakesAndLadders {
         for (int t = 0; t < testCases; t++) {
             Graph graph = new Graph();
             int n = in.nextInt();
-            Set<Integer> skipNodes = new HashSet<>();
+            Set<Integer> fromNodes = new HashSet<>();
+            Map<Integer, Integer> snakesOrLadders = new HashMap<>();
             for (int i = 0; i < n; i++) {
                 int from = in.nextInt();
                 int to = in.nextInt();
-                skipNodes.add(from);
+                fromNodes.add(from);
+                snakesOrLadders.put(from, to);
                 graph.add(from, to);
             }
             int m = in.nextInt();
             for (int i = 0; i < m; i++) {
                 int from = in.nextInt();
                 int to = in.nextInt();
-                skipNodes.add(from);
+                fromNodes.add(from);
+                snakesOrLadders.put(from, to);
                 graph.add(from, to);
             }
-            buildGraph(graph, skipNodes);
-            System.out.println(snakesAndLadders(graph));
+            buildGraph(graph, fromNodes);
+            System.out.println(snakesAndLadders(graph, snakesOrLadders));
         }
     }
 }
