@@ -10,4 +10,10 @@ public class StockMaximizeTest {
         System.setIn(new FileInputStream("src/test/resources/stock-maximize/test1.txt"));
         StockMaximize.main(new String[]{});
     }
+
+    @Test
+    public void test2() throws Exception {
+        System.setIn(new FileInputStream("src/test/resources/stock-maximize/test2.txt"));
+        StockMaximize.main(new String[]{});
+    }
 }
