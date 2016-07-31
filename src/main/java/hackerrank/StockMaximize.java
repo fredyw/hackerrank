@@ -1,7 +1,5 @@
 package hackerrank;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 /**
@@ -9,23 +7,13 @@ import java.util.Scanner;
  */
 public class StockMaximize {
     private static long maxProfit(long[] prices) {
-        return maxProfit(prices, 0, 0, new HashMap<>());
-    }
-
-    private static long maxProfit(long[] prices, int day, long shares, Map<String, Long> memo) {
-        if (day == prices.length) {
-            return 0;
+        long maxSoFar = 0;
+        long profit = 0;
+        for (int i = prices.length - 1; i >= 0; i--) {
+            maxSoFar = Math.max(prices[i], maxSoFar);
+            profit += maxSoFar - prices[i];
         }
-        String key = day + "|" + shares;
-        if (memo.containsKey(key)) {
-            return memo.get(key);
-        }
-        long buy = maxProfit(prices, day + 1, shares + 1, memo) - prices[day];
-        long skip = maxProfit(prices, day + 1, shares, memo);
-        long sell = maxProfit(prices, day + 1, 0, memo) + (shares * prices[day]);
-        long max = Math.max(buy, Math.max(sell, skip));
-        memo.put(key, max);
-        return max;
+        return profit;
     }
 
     public static void main(String[] args) {
