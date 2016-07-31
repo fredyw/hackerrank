@@ -12,23 +12,23 @@ public class Knapsack {
         return knapsack(nums, k, 0, new HashMap<>());
     }
 
-    private static int knapsack(int[] nums, int k, int prev, Map<Integer, Integer> memo) {
+    private static int knapsack(int[] nums, int k, int prev, Map<String, Integer> memo) {
+        String key = k + "|" + prev;
+        if (memo.containsKey(key)) {
+            return memo.get(key);
+        }
         int max = 0;
         for (int i = 0; i < nums.length; i++) {
             int nextK = k - nums[i];
-            if (memo.containsKey(nextK)) {
-                max = Math.max(max, memo.get(nextK));
+            if (k - nums[i] == 0) {
+                max = Math.max(max, nums[i] + prev);
+            } else if (k - nums[i] < 0) {
+                max = Math.max(max, prev);
             } else {
-                if (k - nums[i] == 0) {
-                    max = Math.max(max, nums[i] + prev);
-                } else if (k - nums[i] < 0) {
-                    max = Math.max(max, prev);
-                } else {
-                    max = Math.max(max, knapsack(nums, nextK, nums[i], memo) + prev);
-                }
+                max = Math.max(max, knapsack(nums, nextK, nums[i], memo) + prev);
             }
         }
-        memo.put(k, max);
+        memo.put(key, max);
         return max;
     }
 
