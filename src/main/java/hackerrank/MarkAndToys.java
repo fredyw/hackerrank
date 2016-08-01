@@ -1,5 +1,6 @@
 package hackerrank;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -7,8 +8,16 @@ import java.util.Scanner;
  */
 public class MarkAndToys {
     private static int maxToys(int[] prices, int money) {
-        // TODO
-        return 0;
+        Arrays.sort(prices);
+        int numToys = 0;
+        for (int i = 0; i < prices.length; i++) {
+            if (money - prices[i] < 0) {
+                break;
+            }
+            money -= prices[i];
+            numToys++;
+        }
+        return numToys;
     }
 
     public static void main(String[] args) {
