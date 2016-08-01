@@ -7,8 +7,21 @@ import java.util.Scanner;
  */
 public class SherlockAndArray {
     private static String sherlockAndArray(int[] nums) {
-        // TODO
-        return "";
+        int i = 0;
+        int j = nums.length - 1;
+        int sumLeft = 0;
+        int sumRight = 0;
+        while (i < j) {
+            while (i < j && sumLeft < sumRight) {
+                sumLeft += nums[i];
+                i++;
+            }
+            while (i < j && sumLeft >= sumRight) {
+                sumRight += nums[j];
+                j--;
+            }
+        }
+        return (sumLeft == sumRight) ? "YES" : "NO";
     }
 
     public static void main(String[] args) {
