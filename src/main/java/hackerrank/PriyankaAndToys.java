@@ -1,5 +1,6 @@
 package hackerrank;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -7,8 +8,16 @@ import java.util.Scanner;
  */
 public class PriyankaAndToys {
     private static int priyankAndToys(int[] weights) {
-        // TODO
-        return 0;
+        Arrays.sort(weights);
+        int result = 1;
+        int to = weights[0] + 4;
+        for (int i = 1; i < weights.length; i++) {
+            if (weights[i] > to) {
+                to = weights[i] + 4;
+                result++;
+            }
+        }
+        return result;
     }
 
     public static void main(String[] args) {
