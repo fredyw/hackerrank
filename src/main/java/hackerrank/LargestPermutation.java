@@ -16,9 +16,9 @@ public class LargestPermutation {
             Entry<Integer, Integer> entry = iter.next();
             int num = entry.getKey();
             int idx = entry.getValue();
-            if (a[i] < num) {
-                swap(a, i, idx);
+            if (a[i] != num) {
                 map.put(a[i], idx);
+                swap(a, i, idx);
             }
             i++;
         }
