@@ -12,13 +12,14 @@ public class LargestPermutation {
     private static void largestPermutation(int[] a, int k, TreeMap<Integer, Integer> map) {
         int i = 0;
         Iterator<Entry<Integer, Integer>> iter = map.entrySet().iterator();
-        while (i < k && i < a.length) {
+        while (k > 0 && i < a.length) {
             Entry<Integer, Integer> entry = iter.next();
             int num = entry.getKey();
             int idx = entry.getValue();
             if (a[i] != num) {
                 map.put(a[i], idx);
                 swap(a, i, idx);
+                k--;
             }
             i++;
         }
