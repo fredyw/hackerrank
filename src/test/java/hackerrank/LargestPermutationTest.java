@@ -22,4 +22,10 @@ public class LargestPermutationTest {
         System.setIn(new FileInputStream("src/test/resources/largest-permutation/test3.txt"));
         LargestPermutation.main(new String[]{});
     }
+
+    @Test
+    public void test4() throws Exception {
+        System.setIn(new FileInputStream("src/test/resources/largest-permutation/test4.txt"));
+        LargestPermutation.main(new String[]{});
+    }
 }
