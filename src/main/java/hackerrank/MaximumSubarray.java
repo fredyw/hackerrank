@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
  * https://www.hackerrank.com/challenges/maxsubarray
  */
-public class TheMaximumSubarray {
+public class MaximumSubarray {
     private static int nonContiguousMaxSubarray(int[] nums) {
         int max = nums[0];
         for (int i = 1; i < nums.length; i++) {

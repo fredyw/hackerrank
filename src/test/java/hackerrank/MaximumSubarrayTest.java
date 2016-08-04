@@ -4,22 +4,22 @@ import org.junit.Test;
 
 import java.io.FileInputStream;
 
-public class TheMaximumSubarrayTest {
+public class MaximumSubarrayTest {
     @Test
     public void test1() throws Exception {
         System.setIn(new FileInputStream("src/test/resources/the-maximum-subarray/test1.txt"));
-        TheMaximumSubarray.main(new String[]{});
+        MaximumSubarray.main(new String[]{});
     }
 
     @Test
     public void test2() throws Exception {
         System.setIn(new FileInputStream("src/test/resources/the-maximum-subarray/test2.txt"));
-        TheMaximumSubarray.main(new String[]{});
+        MaximumSubarray.main(new String[]{});
     }
 
     @Test
     public void test3() throws Exception {
         System.setIn(new FileInputStream("src/test/resources/the-maximum-subarray/test3.txt"));
-        TheMaximumSubarray.main(new String[]{});
+        MaximumSubarray.main(new String[]{});
     }
 }
