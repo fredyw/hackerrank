@@ -10,4 +10,10 @@ public class JumpingOnTheCloudsTest {
         System.setIn(new FileInputStream("src/test/resources/jumping-on-the-clouds/test1.txt"));
         JumpingOnTheClouds.main(new String[]{});
     }
+
+    @Test
+    public void test2() throws Exception {
+        System.setIn(new FileInputStream("src/test/resources/jumping-on-the-clouds/test2.txt"));
+        JumpingOnTheClouds.main(new String[]{});
+    }
 }
