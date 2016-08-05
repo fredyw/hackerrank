@@ -4,10 +4,10 @@ import org.junit.Test;
 
 import java.io.FileInputStream;
 
-public class JumpingOnTheCloudsTest {
+public class JumpingOnTheCloudsRevisitedTest {
     @Test
     public void test1() throws Exception {
         System.setIn(new FileInputStream("src/test/resources/jumping-on-the-clouds/test1.txt"));
-        JumpingOnTheClouds.main(new String[]{});
+        JumpingOnTheCloudsRevisited.main(new String[]{});
     }
 }

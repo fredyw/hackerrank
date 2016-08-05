@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
  * https://www.hackerrank.com/challenges/jumping-on-the-clouds-revisited
  */
-public class JumpingOnTheClouds {
+public class JumpingOnTheCloudsRevisited {
     private static int jumpingOnTheClouds(int[] c, int k) {
         int i = 0;
         int e = 100;
