@@ -7,8 +7,26 @@ import java.util.Scanner;
  */
 public class TheLoveLetterMystery {
     private static int loveLetterMystery(String str) {
-        // TODO:
-        return 0;
+        int count = 0;
+        char[] chars = str.toCharArray();
+        for (int i = 0, j = chars.length - 1; i < j; i++, j--) {
+            char left = chars[i];
+            char right = chars[j];
+            if (left != right) {
+                if (left < right) {
+                    while (left < right) {
+                        right--;
+                        count++;
+                    }
+                } else if (left > right) {
+                    while (left > right) {
+                        left--;
+                        count++;
+                    }
+                }
+            }
+        }
+        return count;
     }
 
     public static void main(String[] args) {
