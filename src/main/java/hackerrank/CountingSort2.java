@@ -7,7 +7,16 @@ import java.util.Scanner;
  */
 public class CountingSort2 {
     private static void countingSort(int[] array) {
-        // TODO
+        int[] nums = new int[100];
+        for (int i = 0; i < array.length; i++) {
+            nums[array[i]]++;
+        }
+        for (int i = 0; i < 100; i++) {
+            for (int j = 0; j < nums[i]; j++) {
+                System.out.print(i + " ");
+            }
+        }
+        System.out.println();
     }
 
     public static void main(String[] args) {
