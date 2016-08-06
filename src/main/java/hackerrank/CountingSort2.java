@@ -3,18 +3,11 @@ package hackerrank;
 import java.util.Scanner;
 
 /**
- * https://www.hackerrank.com/challenges/countingsort1
+ * https://www.hackerrank.com/challenges/countingsort2
  */
-public class CountingSort1 {
+public class CountingSort2 {
     private static void countingSort(int[] array) {
-        int[] nums = new int[100];
-        for (int i = 0; i < array.length; i++) {
-            nums[array[i]]++;
-        }
-        for (int i = 0; i < nums.length; i++) {
-            System.out.print(nums[i] + " ");
-        }
-        System.out.println();
+        // TODO
     }
 
     public static void main(String[] args) {
