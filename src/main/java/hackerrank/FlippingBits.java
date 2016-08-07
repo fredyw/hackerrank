@@ -7,8 +7,7 @@ import java.util.Scanner;
  */
 public class FlippingBits {
     private static long flippingBits(long num) {
-        // TODO
-        return 0;
+        return ~num + 0x0000000100000000L;
     }
 
     public static void main(String[] args) {
