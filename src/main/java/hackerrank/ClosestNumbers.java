@@ -1,5 +1,6 @@
 package hackerrank;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -7,7 +8,19 @@ import java.util.Scanner;
  */
 public class ClosestNumbers {
     private static void closestNumbers(int[] nums) {
-        // TODO
+        Arrays.sort(nums);
+        int[] diffArray = new int[nums.length];
+        int min = Integer.MAX_VALUE;
+        for (int i = 1; i < nums.length; i++) {
+            diffArray[i] = Math.abs(nums[i - 1] - nums[i]);
+            min = Math.min(min, diffArray[i]);
+        }
+        for (int i = 1; i < diffArray.length; i++) {
+            if (min == diffArray[i]) {
+                System.out.print(nums[i - 1] + " " + nums[i] + " ");
+            }
+        }
+        System.out.println();
     }
 
     public static void main(String[] args) {
