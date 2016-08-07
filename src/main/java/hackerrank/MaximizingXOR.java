@@ -7,8 +7,14 @@ import java.util.Scanner;
  */
 public class MaximizingXOR {
     private static int maximizingXOR(int l, int r) {
-        // TODO
-        return 0;
+        int max = 0;
+        for (int i = l; i <= r; i++) {
+            for (int j = i; j <= r; j++) {
+                int a = i ^ j;
+                max = Math.max(max, a);
+            }
+        }
+        return max;
     }
 
     public static void main(String[] args) {
