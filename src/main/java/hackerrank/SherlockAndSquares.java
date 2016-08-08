@@ -7,9 +7,9 @@ import java.util.Scanner;
  */
 public class SherlockAndSquares {
     private static int sherlockAndSquares(int a, int b) {
-        int result = 0;
-        // TODO
-        return result;
+        int sqrtA = (int) Math.ceil(Math.sqrt(a));
+        int sqrtB = (int) Math.floor(Math.sqrt(b));
+        return sqrtB - sqrtA + 1;
     }
 
     public static void main(String[] args) {
