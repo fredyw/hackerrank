@@ -16,4 +16,10 @@ public class FairRationsTest {
         System.setIn(new FileInputStream("src/test/resources/fair-rations/test2.txt"));
         FairRations.main(new String[]{});
     }
+
+    @Test
+    public void test3() throws Exception {
+        System.setIn(new FileInputStream("src/test/resources/fair-rations/test3.txt"));
+        FairRations.main(new String[]{});
+    }
 }
