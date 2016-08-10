@@ -10,4 +10,10 @@ public class TaumAndBdayTest {
         System.setIn(new FileInputStream("src/test/resources/taum-and-bday/test1.txt"));
         TaumAndBday.main(new String[]{});
     }
+
+    @Test
+    public void test2() throws Exception {
+        System.setIn(new FileInputStream("src/test/resources/taum-and-bday/test2.txt"));
+        TaumAndBday.main(new String[]{});
+    }
 }
