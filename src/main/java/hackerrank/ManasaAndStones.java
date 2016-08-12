@@ -1,29 +1,19 @@
 package hackerrank;
 
 import java.util.Scanner;
-import java.util.Set;
-import java.util.TreeSet;
 
 /**
  * https://www.hackerrank.com/challenges/manasa-and-stones
  */
 public class ManasaAndStones {
     private static void manasaAndStones(int n, int a, int b) {
-        Set<Integer> set = new TreeSet<>();
-        manasaAndStones(n, a, b, 0, set);
-        set.forEach(val -> {
-            System.out.print(val + " ");
-        });
-        System.out.println();
-    }
-
-    private static void manasaAndStones(int n, int a, int b, int accu, Set<Integer> set) {
-        if (n == 1) {
-            set.add(accu);
-            return;
+        int min = Math.min(a, b) * (n - 1);
+        int max = Math.max(a, b) * (n - 1);
+        int step = Math.max(a, b) - Math.min(a, b);
+        for (int i = min; i < max; i += step) {
+            System.out.print(i + " ");
         }
-        manasaAndStones(n - 1, a, b, accu + a, set);
-        manasaAndStones(n - 1, a, b, accu + b, set);
+        System.out.println(max);
     }
 
     public static void main(String[] args) {
