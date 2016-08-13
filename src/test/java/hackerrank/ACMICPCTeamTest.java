@@ -10,4 +10,10 @@ public class ACMICPCTeamTest {
         System.setIn(new FileInputStream("src/test/resources/acm-icpc-team/test1.txt"));
         ACMICPCTeam.main(new String[]{});
     }
+
+    @Test
+    public void test2() throws Exception {
+        System.setIn(new FileInputStream("src/test/resources/acm-icpc-team/test2.txt"));
+        ACMICPCTeam.main(new String[]{});
+    }
 }
