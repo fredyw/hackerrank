@@ -10,4 +10,10 @@ public class JimAndTheOrdersTest {
         System.setIn(new FileInputStream("src/test/resources/jim-and-the-orders/test1.txt"));
         JimAndTheOrders.main(new String[]{});
     }
+
+    @Test
+    public void test2() throws Exception {
+        System.setIn(new FileInputStream("src/test/resources/jim-and-the-orders/test2.txt"));
+        JimAndTheOrders.main(new String[]{});
+    }
 }
