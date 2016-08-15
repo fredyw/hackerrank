@@ -1,14 +1,41 @@
 package hackerrank;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 /**
  * https://www.hackerrank.com/challenges/beautiful-pairs
  */
 public class BeautifulPairs {
-    private static int beautifulParis(int[] a, int[] b) {
-        // TODO
-        return 0;
+    private static int beautifulPairs(int[] a, int[] b) {
+        Map<Integer, Integer> countMap = new HashMap<>();
+        for (int i = 0; i < a.length; i++) {
+            if (!countMap.containsKey(a[i])) {
+                countMap.put(a[i], 1);
+            } else {
+                countMap.put(a[i], countMap.get(a[i]) + 1);
+            }
+        }
+        int result = 0;
+        for (int i = 0; i < b.length; i++) {
+            if (countMap.containsKey(b[i])) {
+                int count = countMap.get(b[i]);
+                int newCount = count - 1;
+                if (newCount == 0) {
+                    countMap.remove(b[i]);
+                } else {
+                    countMap.put(b[i], newCount);
+                }
+                result++;
+            }
+        }
+        if (countMap.size() == 0) {
+            result--;
+        } else {
+            result++;
+        }
+        return result;
     }
 
     public static void main(String[] args) {
@@ -22,6 +49,6 @@ public class BeautifulPairs {
         for (int i = 0; i < n; i++) {
             b[i] = in.nextInt();
         }
-        System.out.println(beautifulParis(a, b));
+        System.out.println(beautifulPairs(a, b));
     }
 }
