@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
  * https://www.hackerrank.com/challenges/quicksort1
  */
-public class QuickSort1Partition {
+public class Quicksort1Partition {
     private static void partition(int[] array) {
         int pivot = 0;
         int left = pivot + 1;
