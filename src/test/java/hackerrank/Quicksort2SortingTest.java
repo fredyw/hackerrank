@@ -10,4 +10,16 @@ public class Quicksort2SortingTest {
         System.setIn(new FileInputStream("src/test/resources/quicksort2-sorting/test1.txt"));
         Quicksort2Sorting.main(new String[]{});
     }
+
+    @Test
+    public void test2() throws Exception {
+        System.setIn(new FileInputStream("src/test/resources/quicksort2-sorting/test2.txt"));
+        Quicksort2Sorting.main(new String[]{});
+    }
+
+    @Test
+    public void test3() throws Exception {
+        System.setIn(new FileInputStream("src/test/resources/quicksort2-sorting/test3.txt"));
+        Quicksort2Sorting.main(new String[]{});
+    }
 }
