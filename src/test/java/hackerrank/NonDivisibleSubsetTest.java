@@ -4,9 +4,6 @@ import org.junit.Test;
 
 import java.io.FileInputStream;
 
-/**
- * @author fredy <fredy.wijaya@amd.com>
- */
 public class NonDivisibleSubsetTest {
     @Test
     public void test1() throws Exception {
