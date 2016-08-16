@@ -10,4 +10,10 @@ public class QuickSort1PartitionTest {
         System.setIn(new FileInputStream("src/test/resources/quicksort1-partition/test1.txt"));
         QuickSort1Partition.main(new String[]{});
     }
+
+    @Test
+    public void test2() throws Exception {
+        System.setIn(new FileInputStream("src/test/resources/quicksort1-partition/test2.txt"));
+        QuickSort1Partition.main(new String[]{});
+    }
 }
