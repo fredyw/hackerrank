@@ -1,5 +1,6 @@
 package hackerrank;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -7,10 +8,11 @@ import java.util.Scanner;
  */
 public class NonDivisibleSubset {
     private static int nonDivisibleSubset(int[] array, int k) {
-        int[] mods = new int[array.length];
+        int[] mods = new int[k];
         for (int i = 0; i < array.length; i++) {
             mods[array[i] % k]++;
         }
+        System.out.println(Arrays.toString(mods));
         int max = mods[0];
         for (int i = 1, j = mods.length - 1; i < j; i++, j--) {
             max += Math.max(mods[i], mods[j]);

@@ -22,4 +22,16 @@ public class NonDivisibleSubsetTest {
         System.setIn(new FileInputStream("src/test/resources/non-divisible-subset/test3.txt"));
         NonDivisibleSubset.main(new String[]{});
     }
+
+    @Test
+    public void test4() throws Exception {
+        System.setIn(new FileInputStream("src/test/resources/non-divisible-subset/test4.txt"));
+        NonDivisibleSubset.main(new String[]{});
+    }
+
+    @Test
+    public void test5() throws Exception {
+        System.setIn(new FileInputStream("src/test/resources/non-divisible-subset/test5.txt"));
+        NonDivisibleSubset.main(new String[]{});
+    }
 }
