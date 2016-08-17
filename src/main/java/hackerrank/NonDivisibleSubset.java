@@ -7,8 +7,15 @@ import java.util.Scanner;
  */
 public class NonDivisibleSubset {
     private static int nonDivisibleSubset(int[] array, int k) {
-        // TODO
-        return 0;
+        int[] mods = new int[array.length];
+        for (int i = 0; i < array.length; i++) {
+            mods[array[i] % k]++;
+        }
+        int max = mods[0];
+        for (int i = 1, j = mods.length - 1; i < j; i++, j--) {
+            max += Math.max(mods[i], mods[j]);
+        }
+        return max;
     }
 
     public static void main(String[] args) {
