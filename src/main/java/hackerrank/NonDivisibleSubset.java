@@ -12,8 +12,12 @@ public class NonDivisibleSubset {
             mods[array[i] % k]++;
         }
         int max = Math.min(mods[0], 1);
-        for (int i = 1, j = mods.length - 1; i < j; i++, j--) {
-            max += Math.max(mods[i], mods[j]);
+        for (int i = 1, j = mods.length - 1; i <= j; i++, j--) {
+            if (i == j) {
+                max += Math.min(mods[i], 1);
+            } else {
+                max += Math.max(mods[i], mods[j]);
+            }
         }
         return max;
     }
