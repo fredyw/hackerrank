@@ -75,7 +75,7 @@ public class WhatsNext {
             int length = in.nextInt();
             long[] nums = new long[length];
             for (int i = 0; i < length; i++) {
-                nums[i] = Long.parseLong(in.next());
+                nums[i] = in.nextLong();
             }
             // TODO
             whatsNext(nums);
