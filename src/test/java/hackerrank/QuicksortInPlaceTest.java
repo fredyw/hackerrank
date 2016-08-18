@@ -22,4 +22,10 @@ public class QuicksortInPlaceTest {
         System.setIn(new FileInputStream("src/test/resources/quicksort-in-place/test3.txt"));
         QuicksortInPlace.main(new String[]{});
     }
+
+    @Test
+    public void test4() throws Exception {
+        System.setIn(new FileInputStream("src/test/resources/quicksort-in-place/test4.txt"));
+        QuicksortInPlace.main(new String[]{});
+    }
 }

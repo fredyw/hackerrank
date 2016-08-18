@@ -11,7 +11,7 @@ public class QuicksortInPlace {
     }
 
     private static void quicksort(int[] array, int begin, int end) {
-        if (begin > end) {
+        if (begin >= end) {
             return;
         }
         int p = partition(array, begin, end);
@@ -20,29 +20,20 @@ public class QuicksortInPlace {
     }
 
     private static int partition(int[] array, int begin, int end) {
-        int pivot = begin;
-        int left = pivot + 1;
-        int right = end;
-        while (true) {
-            while (left <= end && array[left] < array[pivot]) {
-                left++;
+        int pivot = array[end];
+        int i = begin;
+        for (int j = begin; j <= end - 1; j++) {
+            if (array[j] <= pivot) {
+                swap(array, i, j);
+                i++;
             }
-            if (left > end) {
-                break;
-            }
-            while (right >= begin && array[pivot] < array[right]) {
-                right--;
-            }
-            if (right < begin) {
-                break;
-            }
-            if (left >= right) {
-                break;
-            }
-            swap(array, left, right);
         }
-        swap(array, pivot, right);
-        return right;
+        swap(array, i, end);
+        for (int x = 0; x < array.length; x++) {
+            System.out.print(array[x] + " ");
+        }
+        System.out.println();
+        return i;
     }
 
     private static void swap(int[] array, int i, int j) {
