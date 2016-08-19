@@ -10,4 +10,10 @@ public class BiggerIsGreaterTest {
         System.setIn(new FileInputStream("src/test/resources/bigger-is-greater/test1.txt"));
         BiggerIsGreater.main(new String[]{});
     }
+
+    @Test
+    public void test2() throws Exception {
+        System.setIn(new FileInputStream("src/test/resources/bigger-is-greater/test2.txt"));
+        BiggerIsGreater.main(new String[]{});
+    }
 }

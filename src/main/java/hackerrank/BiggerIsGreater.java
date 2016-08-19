@@ -7,8 +7,33 @@ import java.util.Scanner;
  */
 public class BiggerIsGreater {
     private static String nextPermutation(String str) {
-        // TODO
-        return null;
+        char[] chars = str.toCharArray();
+        int i = chars.length - 1;
+        for (; i >= 1; i--) {
+            if (chars[i - 1] < chars[i]) {
+                for (int j = chars.length - 1; j > i - 1; j--) {
+                    if (chars[i - 1] < chars[j]) {
+                        swap(chars, i - 1, j);
+                        break;
+                    }
+                }
+                for (int x = i, y = chars.length - 1; x < y; x++, y--) {
+                    swap(chars, x, y);
+                }
+                break;
+            }
+        }
+        String newString = new String(chars);
+        if (newString.equals(str)) {
+            return "no answer";
+        }
+        return newString;
+    }
+
+    private static void swap(char[] chars, int i, int j) {
+        char tmp = chars[i];
+        chars[i] = chars[j];
+        chars[j] = tmp;
     }
 
     public static void main(String[] args) {
