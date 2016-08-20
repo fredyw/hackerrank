@@ -39,10 +39,11 @@ public class TheLongestCommonSubsequence {
         }
         if (array1[i] == array2[j]) {
             LCS lcs = longestCommonSubsequence(array1, array2, i + 1, j + 1, memo);
-            lcs.list.add(array1[i]);
-            lcs.max++;
-            memo.put(key, lcs);
-            return lcs;
+            LCS newLCS = new LCS(lcs.max + 1);
+            newLCS.list.addAll(lcs.list);
+            newLCS.list.add(array1[i]);
+            memo.put(key, newLCS);
+            return newLCS;
         }
         LCS a = longestCommonSubsequence(array1, array2, i, j + 1, memo);
         LCS b = longestCommonSubsequence(array1, array2, i + 1, j, memo);
