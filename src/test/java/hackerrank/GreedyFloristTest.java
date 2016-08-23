@@ -16,4 +16,22 @@ public class GreedyFloristTest {
         System.setIn(new FileInputStream("src/test/resources/greedy-florist/test2.txt"));
         GreedyFlorist.main(new String[]{});
     }
+
+    @Test
+    public void test3() throws Exception {
+        System.setIn(new FileInputStream("src/test/resources/greedy-florist/test3.txt"));
+        GreedyFlorist.main(new String[]{});
+    }
+
+    @Test
+    public void test4() throws Exception {
+        System.setIn(new FileInputStream("src/test/resources/greedy-florist/test4.txt"));
+        GreedyFlorist.main(new String[]{});
+    }
+
+    @Test
+    public void test5() throws Exception {
+        System.setIn(new FileInputStream("src/test/resources/greedy-florist/test5.txt"));
+        GreedyFlorist.main(new String[]{});
+    }
 }
