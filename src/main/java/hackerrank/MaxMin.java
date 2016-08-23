@@ -1,5 +1,6 @@
 package hackerrank;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -7,8 +8,15 @@ import java.util.Scanner;
  */
 public class MaxMin {
     private static int maxMin(int[] array, int k) {
-        // TODO
-        return 0;
+        Arrays.sort(array);
+        int min = Integer.MAX_VALUE;
+        for (int i = 0; i < array.length; i++) {
+            if (i + k - 1 >= array.length) {
+                break;
+            }
+            min = Math.min(min, array[i + k - 1] - array[i]);
+        }
+        return min;
     }
 
     public static void main(String[] args) {
