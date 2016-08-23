@@ -13,25 +13,13 @@ public class GreedyFlorist {
         for (int i = 0; i < k; i++) {
             purchases[i] = 1;
         }
-        int expensiveIdx = costs.length - 1;
-        int cheapIdx = 0;
         int result = 0;
         int personIdx = 0;
-        boolean buyExpensive = true;
-        while (cheapIdx <= expensiveIdx) {
+        for (int i = costs.length - 1; i >= 0; i--) {
             if (personIdx >= k) {
                 personIdx = 0;
-                buyExpensive = !buyExpensive;
             }
-            if (buyExpensive) {
-                System.out.println(expensiveIdx);
-                result += purchases[personIdx] * costs[expensiveIdx];
-                expensiveIdx--;
-            } else {
-                System.out.println(cheapIdx);
-                result += purchases[personIdx] * costs[cheapIdx];
-                cheapIdx++;
-            }
+            result += purchases[personIdx] * costs[i];
             purchases[personIdx]++;
             personIdx++;
         }
