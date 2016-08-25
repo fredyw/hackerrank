@@ -6,9 +6,30 @@ import java.util.Scanner;
  * https://www.hackerrank.com/challenges/lego-blocks
  */
 public class LegoBlocks {
-    private static int legoBlocks(int n, int m) {
+    private static long legoBlocks(int n, int m) {
+        long total = (long) Math.pow(combinations(m), n);
+        System.out.println("total: " + total);
+        for (int i = 1; i <= m - 1; i++) {
+            long substract = (long) Math.pow(combinations(i), n);
+            System.out.println("substract: " + substract);
+            total -= substract;
+        }
         // TODO
-        return 0;
+        return total;
+    }
+
+    private static long combinations(int width) {
+        if (width < 0) {
+            return 0;
+        }
+        if (width == 0) {
+            return 1;
+        }
+        long max = 0;
+        for (int i = 1; i <= 4; i++) {
+            max += combinations(width - i);
+        }
+        return max;
     }
 
     public static void main(String[] args) {
