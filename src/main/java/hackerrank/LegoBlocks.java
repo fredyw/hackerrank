@@ -14,11 +14,11 @@ public class LegoBlocks {
         System.out.println("total: " + total);
         for (int i = 1; i <= m - 1; i++) {
             long a = (long) Math.pow(allBlocks(i, memo), n);
-//            System.out.println("a: " + a);
+            System.out.println("a: " + a);
             long b = (long) Math.pow(allBlocks(m - i, memo), n);
-//            System.out.println("b: " + b);
+            System.out.println("b: " + b);
             long substract = a * b;
-//            System.out.println("substract (" + i + " and " + (m - i) + "): " + substract);
+            System.out.println("substract (" + i + " and " + (m - i) + "): " + substract);
             total -= substract;
         }
         // TODO
