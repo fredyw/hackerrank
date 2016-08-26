@@ -1,5 +1,7 @@
 package hackerrank;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 /**
@@ -7,28 +9,37 @@ import java.util.Scanner;
  */
 public class LegoBlocks {
     private static long legoBlocks(int n, int m) {
-        long total = (long) Math.pow(combinations(m), n);
+        Map<Integer, Long> memo = new HashMap<>();
+        long total = (long) Math.pow(allBlocks(m, memo), n);
         System.out.println("total: " + total);
         for (int i = 1; i <= m - 1; i++) {
-            long substract = (long) Math.pow(combinations(i), n);
-            System.out.println("substract: " + substract);
+            long a = (long) Math.pow(allBlocks(i, memo), n);
+//            System.out.println("a: " + a);
+            long b = (long) Math.pow(allBlocks(m - i, memo), n);
+//            System.out.println("b: " + b);
+            long substract = a * b;
+//            System.out.println("substract (" + i + " and " + (m - i) + "): " + substract);
             total -= substract;
         }
         // TODO
         return total;
     }
 
-    private static long combinations(int width) {
+    private static long allBlocks(int width, Map<Integer, Long> memo) {
         if (width < 0) {
             return 0;
         }
         if (width == 0) {
             return 1;
         }
+        if (memo.containsKey(width)) {
+            return memo.get(width);
+        }
         long max = 0;
         for (int i = 1; i <= 4; i++) {
-            max += combinations(width - i);
+            max += allBlocks(width - i, memo);
         }
+        memo.put(width, max);
         return max;
     }
 
