@@ -9,19 +9,27 @@ import java.util.Scanner;
  */
 public class LegoBlocks {
     private static long legoBlocks(int n, int m) {
-        Map<Integer, Long> memo = new HashMap<>();
-        long total = (long) Math.pow(allBlocks(m, memo), n);
-        System.out.println("total: " + total);
+        // TODO
+        return solidBlocks(n, m, new HashMap<>()) % 1000000007;
+    }
+
+    private static long solidBlocks(int n, int m, Map<String, Long> solidMemo) {
+        if (m == 0) {
+            return 0;
+        }
+        String key = n + "|" + m;
+        if (solidMemo.containsKey(key)) {
+            return solidMemo.get(key);
+        }
+        Map<Integer, Long> allMemo = new HashMap<>();
+        long total = (long) Math.pow(allBlocks(m, allMemo), n);
         for (int i = 1; i <= m - 1; i++) {
-            long a = (long) Math.pow(allBlocks(i, memo), n);
-            System.out.println("a: " + a);
-            long b = (long) Math.pow(allBlocks(m - i, memo), n);
-            System.out.println("b: " + b);
-            long substract = a * b;
-            System.out.println("substract (" + i + " and " + (m - i) + "): " + substract);
+            long a = solidBlocks(n, i, solidMemo);
+            long b = (long) Math.pow(allBlocks(m - i, allMemo), n);
+            long substract = (a * b);
             total -= substract;
         }
-        // TODO
+        solidMemo.put(key, total);
         return total;
     }
 

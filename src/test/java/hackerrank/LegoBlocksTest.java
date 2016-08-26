@@ -10,4 +10,10 @@ public class LegoBlocksTest {
         System.setIn(new FileInputStream("src/test/resources/lego-blocks/test1.txt"));
         LegoBlocks.main(new String[]{});
     }
+
+    @Test
+    public void test2() throws Exception {
+        System.setIn(new FileInputStream("src/test/resources/lego-blocks/test2.txt"));
+        LegoBlocks.main(new String[]{});
+    }
 }
