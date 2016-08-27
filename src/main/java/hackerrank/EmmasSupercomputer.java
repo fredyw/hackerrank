@@ -79,6 +79,7 @@ public class EmmasSupercomputer {
             for (int j = i + 1; j < blocks.size(); j++) {
                 Block a = blocks.get(i);
                 Block b = blocks.get(j);
+                // to make sure there's no intersection
                 for (String x : a.rowsCols) {
                     for (String y : b.rowsCols) {
                         if (x.equals(y)) {
