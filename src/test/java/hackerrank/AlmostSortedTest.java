@@ -22,4 +22,16 @@ public class AlmostSortedTest {
         System.setIn(new FileInputStream("src/test/resources/almost-sorted/test3.txt"));
         AlmostSorted.main(new String[]{});
     }
+
+    @Test
+    public void test4() throws Exception {
+        System.setIn(new FileInputStream("src/test/resources/almost-sorted/test4.txt"));
+        AlmostSorted.main(new String[]{});
+    }
+
+    @Test
+    public void test5() throws Exception {
+        System.setIn(new FileInputStream("src/test/resources/almost-sorted/test5.txt"));
+        AlmostSorted.main(new String[]{});
+    }
 }
