@@ -10,4 +10,10 @@ public class CutTheTreeTest {
         System.setIn(new FileInputStream("src/test/resources/cut-the-tree/test1.txt"));
         CutTheTree.main(new String[]{});
     }
+
+    @Test
+    public void test2() throws Exception {
+        System.setIn(new FileInputStream("src/test/resources/cut-the-tree/test2.txt"));
+        CutTheTree.main(new String[]{});
+    }
 }

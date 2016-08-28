@@ -24,12 +24,17 @@ public class CutTheTree {
 
     private static int cutTheTree(Map<Integer, List<Vertex>> adjList, Map<Integer, Vertex> vertices) {
         int min = Integer.MAX_VALUE;
+        // TODO
         for (int i = 1; i <= adjList.size(); i++) {
             for (Vertex vertex : adjList.get(i)) {
-                Set<Integer> marked = new HashSet<>();
-                marked.add(vertex.vertex);
-                int total1 = calcTotalValue(adjList, vertices.get(i), marked);
-                int total2 = calcTotalValue(adjList, vertex, marked);
+                Set<Integer> marked1 = new HashSet<>();
+                marked1.add(vertex.vertex);
+                int total1 = calcTotalValue(adjList, vertices.get(i), marked1);
+
+                Set<Integer> marked2 = new HashSet<>();
+                marked2.add(vertices.get(i).vertex);
+                int total2 = calcTotalValue(adjList, vertex, marked2);
+
                 int diff = Math.abs(total1 - total2);
                 min = Math.min(min, diff);
             }
