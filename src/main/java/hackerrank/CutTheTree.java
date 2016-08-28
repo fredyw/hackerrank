@@ -2,9 +2,11 @@ package hackerrank;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 
 /**
  * https://www.hackerrank.com/challenges/cut-the-tree
@@ -20,9 +22,31 @@ public class CutTheTree {
         }
     }
 
-    private static int cutTheTree(Map<Integer, List<Vertex>> adjList) {
-        // TODO
-        return 0;
+    private static int cutTheTree(Map<Integer, List<Vertex>> adjList, Map<Integer, Vertex> vertices) {
+        int min = Integer.MAX_VALUE;
+        for (int i = 1; i <= adjList.size(); i++) {
+            for (Vertex vertex : adjList.get(i)) {
+                Set<Integer> marked = new HashSet<>();
+                marked.add(vertex.vertex);
+                int total1 = calcTotalValue(adjList, vertices.get(i), marked);
+                int total2 = calcTotalValue(adjList, vertex, marked);
+                int diff = Math.abs(total1 - total2);
+                min = Math.min(min, diff);
+            }
+        }
+        return min;
+    }
+
+    private static int calcTotalValue(Map<Integer, List<Vertex>> adjList, Vertex vertex,
+                                      Set<Integer> marked) {
+        marked.add(vertex.vertex);
+        int totalValue = vertex.value;
+        for (Vertex adj : adjList.get(vertex.vertex)) {
+            if (!marked.contains(adj.vertex)) {
+                totalValue += calcTotalValue(adjList, adj, marked);
+            }
+        }
+        return totalValue;
     }
 
     public static void main(String[] args) {
@@ -39,6 +63,8 @@ public class CutTheTree {
             int from = in.nextInt();
             int to = in.nextInt();
             adjList.get(from).add(vertices.get(to));
+            adjList.get(to).add(vertices.get(from));
         }
+        System.out.println(cutTheTree(adjList, vertices));
     }
 }
