@@ -15,6 +15,7 @@ public class CutTheTree {
     private static class Vertex {
         private final int vertex;
         private final int value;
+        private int totalValue;
 
         public Vertex(int vertex, int value) {
             this.vertex = vertex;
@@ -22,22 +23,16 @@ public class CutTheTree {
         }
     }
 
-    private static int cutTheTree(Map<Integer, List<Vertex>> adjList, Map<Integer, Vertex> vertices) {
+    private static int cutTheTree(Map<Integer, List<Vertex>> adjList,
+                                  Map<Integer, Vertex> vertices,
+                                  int totalValue) {
         int min = Integer.MAX_VALUE;
-        // TODO
-        for (int i = 1; i <= adjList.size(); i++) {
-            for (Vertex vertex : adjList.get(i)) {
-                Set<Integer> marked1 = new HashSet<>();
-                marked1.add(vertex.vertex);
-                int total1 = calcTotalValue(adjList, vertices.get(i), marked1);
-
-                Set<Integer> marked2 = new HashSet<>();
-                marked2.add(vertices.get(i).vertex);
-                int total2 = calcTotalValue(adjList, vertex, marked2);
-
-                int diff = Math.abs(total1 - total2);
-                min = Math.min(min, diff);
-            }
+        calcTotalValue(adjList, vertices.get(1), new HashSet<>()); // start from the root
+        for (int i = 2; i <= adjList.size(); i++) {
+            int a = vertices.get(i).totalValue;
+            int b = totalValue - a;
+            int diff = Math.abs(a - b);
+            min = Math.min(min, diff);
         }
         return min;
     }
@@ -51,6 +46,7 @@ public class CutTheTree {
                 totalValue += calcTotalValue(adjList, adj, marked);
             }
         }
+        vertex.totalValue = totalValue;
         return totalValue;
     }
 
@@ -59,10 +55,12 @@ public class CutTheTree {
         int n = in.nextInt();
         Map<Integer, Vertex> vertices = new HashMap<>();
         Map<Integer, List<Vertex>> adjList = new HashMap<>();
+        int totalValue = 0;
         for (int i = 1; i <= n; i++) {
             int val = in.nextInt();
             vertices.put(i, new Vertex(i, val));
             adjList.put(i, new ArrayList<>());
+            totalValue += val;
         }
         for (int i = 1; i <= n - 1; i++) {
             int from = in.nextInt();
@@ -70,6 +68,6 @@ public class CutTheTree {
             adjList.get(from).add(vertices.get(to));
             adjList.get(to).add(vertices.get(from));
         }
-        System.out.println(cutTheTree(adjList, vertices));
+        System.out.println(cutTheTree(adjList, vertices, totalValue));
     }
 }
