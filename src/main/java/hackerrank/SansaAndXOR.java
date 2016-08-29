@@ -12,7 +12,7 @@ public class SansaAndXOR {
         }
         int result = 0;
         for (int i = 0; i < array.length; i++) {
-            if (i % 2 != 0) {
+            if (i % 2 == 0) {
                 result ^= array[i];
             }
         }
