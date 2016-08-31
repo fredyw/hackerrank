@@ -11,8 +11,26 @@ import java.util.Set;
  */
 public class AbsolutePermutation {
     private static void absolutePermutation(int n, int k) {
-        List<Integer> result = absolutePermutation(n, k, 1, new ArrayList<>(), new HashSet<>());
-        if (result.isEmpty()) {
+        Set<Integer> set = new HashSet<>();
+        List<Integer> result = new ArrayList<>();
+        for (int i = 1; i <= n; i++) {
+            int a = i - k;
+            if (a >= 1) {
+                if (set.add(a)) {
+                    result.add(a);
+                    continue;
+                }
+            }
+            int b = i + k;
+            if (b <= n) {
+                if (set.add(b)) {
+                    result.add(b);
+                } else {
+                    break;
+                }
+            }
+        }
+        if (result.size() != n) {
             System.out.println("-1");
         } else {
             for (int num : result) {
@@ -20,42 +38,6 @@ public class AbsolutePermutation {
             }
             System.out.println();
         }
-        // TODO
-    }
-
-    private static List<Integer> absolutePermutation(int n, int k, int i, List<Integer> accu,
-                                            Set<Integer> set) {
-        if (i == n + 1) {
-            if (accu.size() == n) {
-                return accu;
-            }
-            return new ArrayList<>();
-        }
-        if (i + k <= n) {
-            List<Integer> newAccu = new ArrayList<>(accu);
-            newAccu.add(i + k);
-            Set<Integer> newSet = new HashSet<>(set);
-            if (!newSet.add(i + k)) {
-                return new ArrayList<>();
-            }
-            List<Integer> result = absolutePermutation(n, k, i + 1, newAccu, newSet);
-            if (!result.isEmpty()) {
-                return result;
-            }
-        }
-        if (i - k >= 1) {
-            List<Integer> newAccu = new ArrayList<>(accu);
-            newAccu.add(i - k);
-            Set<Integer> newSet = new HashSet<>(set);
-            if (!newSet.add(i - k)) {
-                return new ArrayList<>();
-            }
-            List<Integer> result = absolutePermutation(n, k, i + 1, newAccu, newSet);
-            if (!result.isEmpty()) {
-                return result;
-            }
-        }
-        return new ArrayList<>();
     }
 
     public static void main(String[] args) {
