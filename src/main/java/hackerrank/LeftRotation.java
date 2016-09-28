@@ -6,10 +6,17 @@ import java.util.Scanner;
  * https://www.hackerrank.com/challenges/ctci-array-left-rotation
  */
 public class LeftRotation {
-    private static void leftRotation(int[] array) {
-        // TODO
-        for (int i = 0; i < array.length; i++) {
-            System.out.print(array[i]);
+    private static void leftRotation(int[] array, int k) {
+        int modK = k % array.length;
+        int[] rotated = new int[array.length];
+        for (int i = 0, j = modK; i < array.length; i++, j++) {
+            if (j == array.length) {
+                j = 0;
+            }
+            rotated[i] = array[j];
+        }
+        for (int i = 0; i < rotated.length; i++) {
+            System.out.print(rotated[i] + " ");
         }
         System.out.println();
     }
@@ -22,6 +29,6 @@ public class LeftRotation {
         for (int i = 0; i < n; i++) {
             a[i] = in.nextInt();
         }
-        leftRotation(a);
+        leftRotation(a, k);
     }
 }
