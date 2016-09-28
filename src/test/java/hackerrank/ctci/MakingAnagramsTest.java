@@ -10,4 +10,10 @@ public class MakingAnagramsTest {
         System.setIn(new FileInputStream("src/test/resources/ctci/making-anagrams/test1.txt"));
         MakingAnagrams.main(new String[]{});
     }
+
+    @Test
+    public void test() throws Exception {
+        System.setIn(new FileInputStream("src/test/resources/ctci/making-anagrams/test2.txt"));
+        MakingAnagrams.main(new String[]{});
+    }
 }
