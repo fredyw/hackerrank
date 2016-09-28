@@ -10,38 +10,32 @@ public class ATaleOfTwoStacks {
     private static class MyQueue<T> {
         private Stack<T> stack1 = new Stack<>();
         private Stack<T> stack2 = new Stack<>();
-        private T front;
 
         public void enqueue(T element) {
             stack1.push(element);
-            front = null;
         }
 
         public void dequeue() {
-            while (!stack1.isEmpty()) {
-                stack2.push(stack1.pop());
-            }
-            stack2.pop();
             if (!stack2.isEmpty()) {
-                front = stack2.peek();
-            }
-            while (!stack2.isEmpty()) {
-                stack1.push(stack2.pop());
+                stack2.pop();
+            } else {
+                while (!stack1.isEmpty()) {
+                    stack2.push(stack1.pop());
+                }
+                stack2.pop();
             }
         }
 
         public T peek() {
-            if (front != null) {
-                return front;
+            if (!stack2.isEmpty()) {
+                return stack2.peek();
+            } else {
+                while (!stack1.isEmpty()) {
+                    stack2.push(stack1.pop());
+                }
+                return stack2.peek();
+
             }
-            while (!stack1.isEmpty()) {
-                stack2.push(stack1.pop());
-            }
-            T val = stack2.peek();
-            while (!stack2.isEmpty()) {
-                stack1.push(stack2.pop());
-            }
-            return val;
         }
     }
 
