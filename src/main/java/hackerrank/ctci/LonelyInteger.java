@@ -7,8 +7,11 @@ import java.util.Scanner;
  */
 public class LonelyInteger {
     private static int lonelyInteger(int[] a) {
-        // TODO
-        return 0;
+        int n = a[0];
+        for (int i = 1; i < a.length; i++) {
+            n ^= a[i];
+        }
+        return n;
     }
 
     public static void main(String[] args) {
