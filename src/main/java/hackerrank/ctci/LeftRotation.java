@@ -1,4 +1,4 @@
-package hackerrank;
+package hackerrank.ctci;
 
 import java.util.Scanner;
 

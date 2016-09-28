@@ -1,5 +1,6 @@
-package hackerrank;
+package hackerrank.ctci;
 
+import hackerrank.ctci.LeftRotation;
 import org.junit.Test;
 
 import java.io.FileInputStream;
