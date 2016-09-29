@@ -6,6 +6,11 @@ import java.util.Scanner;
  * https://www.hackerrank.com/challenges/ctci-connected-cell-in-a-grid
  */
 public class ConnectedCellInAGrid {
+    private static int connectedCell(int[][] grid) {
+        // TODO
+        return 0;
+    }
+
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         int n = in.nextInt();
