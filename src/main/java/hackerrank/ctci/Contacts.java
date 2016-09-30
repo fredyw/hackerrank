@@ -1,8 +1,6 @@
 package hackerrank.ctci;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -13,6 +11,10 @@ public class Contacts {
     private static class Node {
         private final Map<Character, Node> children = new HashMap<>();
         private boolean word;
+    }
+
+    private static class IntRef {
+        int count;
     }
 
     private static class Trie {
@@ -43,46 +45,44 @@ public class Contacts {
             }
         }
 
-        private List<String> find(String str) {
-            List<String> words = new ArrayList<>();
-            find(str, root, 0, "", words);
-            return words;
+        private int find(String str) {
+            IntRef ref = new IntRef();
+            find(str, root, 0, ref);
+            return ref.count;
         }
 
-        private static void find(String str, Node node, int idx, String word,
-                                 List<String> words) {
+        private static void find(String str, Node node, int idx, IntRef ref) {
             if (idx == str.length()) {
-                allChildren(node, word, words);
+                allChildren(node, ref);
                 return;
             }
             char c = str.charAt(idx);
             if (node.children.containsKey(c)) {
                 Node child = node.children.get(c);
                 if (idx == str.length() - 1 && child.word) {
-                    words.add(word + c);
+                    ref.count++;
                 }
-                find(str, child, idx + 1, word + c, words);
+                find(str, child, idx + 1, ref);
             }
         }
 
-        private static void allChildren(Node node, String word, List<String> words) {
+        private static void allChildren(Node node, IntRef ref) {
             if (node == null) {
                 return;
             }
             for (Map.Entry<Character, Node> child : node.children.entrySet()) {
-                char c = child.getKey();
                 Node cn = child.getValue();
                 if (cn.word) {
-                    words.add(word + c);
+                    ref.count++;
                 }
-                allChildren(cn, word + c, words);
+                allChildren(cn, ref);
             }
         }
     }
 
     private static void contact(Trie trie, String op, String contact) {
         if (op.equals("find")) {
-            System.out.println(trie.find(contact).size());
+            System.out.println(trie.find(contact));
         } else if (op.equals("add")) {
             trie.add(contact);
         }
