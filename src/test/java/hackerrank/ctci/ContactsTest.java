@@ -22,4 +22,10 @@ public class ContactsTest {
         System.setIn(new FileInputStream("src/test/resources/ctci/contacts/test3.txt"));
         Contacts.main(new String[]{});
     }
+
+    @Test
+    public void test4() throws Exception {
+        System.setIn(new FileInputStream("src/test/resources/ctci/contacts/test4.txt"));
+        Contacts.main(new String[]{});
+    }
 }

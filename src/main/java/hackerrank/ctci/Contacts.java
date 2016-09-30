@@ -9,6 +9,16 @@ public class Contacts {
     private static class Node {
         private final Node[] children = new Node[26];
         private boolean word;
+        private int count;
+
+        @Override
+        public String toString() {
+            final StringBuilder sb = new StringBuilder("Node{");
+            sb.append("word=").append(word);
+            sb.append(", count=").append(count);
+            sb.append('}');
+            return sb.toString();
+        }
     }
 
     private static class IntRef {
@@ -31,15 +41,19 @@ public class Contacts {
                 Node child = node.children[c - 'a'];
                 if (str.length() - 1 == idx) {
                     child.word = true;
+                    child.count++;
                 }
                 add(str, child, idx + 1);
+                node.count++;
             } else {
                 Node newNode = new Node();
                 if (str.length() - 1 == idx) {
                     newNode.word = true;
+                    newNode.count++;
                 }
                 node.children[c - 'a'] = newNode;
                 add(str, newNode, idx + 1);
+                node.count++;
             }
         }
 
@@ -51,7 +65,7 @@ public class Contacts {
 
         private static void find(String str, Node node, int idx, IntRef ref) {
             if (idx == str.length()) {
-                allChildren(node, ref);
+                ref.count = node.count;
                 return;
             }
             char c = str.charAt(idx);
@@ -61,21 +75,6 @@ public class Contacts {
                     ref.count++;
                 }
                 find(str, child, idx + 1, ref);
-            }
-        }
-
-        private static void allChildren(Node node, IntRef ref) {
-            if (node == null) {
-                return;
-            }
-            for (Node child : node.children) {
-                if (child == null) {
-                    continue;
-                }
-                if (child.word) {
-                    ref.count++;
-                }
-                allChildren(child, ref);
             }
         }
     }
