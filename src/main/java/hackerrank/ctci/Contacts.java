@@ -7,7 +7,7 @@ import java.util.Scanner;
  */
 public class Contacts {
     private static class Node {
-        private final Node[] children = new Node[27];
+        private final Node[] children = new Node[26];
         private boolean word;
     }
 
