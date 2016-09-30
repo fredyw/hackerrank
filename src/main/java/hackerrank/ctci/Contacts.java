@@ -1,7 +1,5 @@
 package hackerrank.ctci;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 /**
@@ -9,7 +7,7 @@ import java.util.Scanner;
  */
 public class Contacts {
     private static class Node {
-        private final Map<Character, Node> children = new HashMap<>();
+        private final Node[] children = new Node[27];
         private boolean word;
     }
 
@@ -29,8 +27,8 @@ public class Contacts {
                 return;
             }
             char c = str.charAt(idx);
-            if (node.children.containsKey(c)) {
-                Node child = node.children.get(c);
+            if (node.children[c - 'a'] != null) {
+                Node child = node.children[c - 'a'];
                 if (str.length() - 1 == idx) {
                     child.word = true;
                 }
@@ -40,7 +38,7 @@ public class Contacts {
                 if (str.length() - 1 == idx) {
                     newNode.word = true;
                 }
-                node.children.put(c, newNode);
+                node.children[c - 'a'] = newNode;
                 add(str, newNode, idx + 1);
             }
         }
@@ -57,8 +55,8 @@ public class Contacts {
                 return;
             }
             char c = str.charAt(idx);
-            if (node.children.containsKey(c)) {
-                Node child = node.children.get(c);
+            if (node.children[c - 'a'] != null) {
+                Node child = node.children[c - 'a'];
                 if (idx == str.length() - 1 && child.word) {
                     ref.count++;
                 }
@@ -70,12 +68,14 @@ public class Contacts {
             if (node == null) {
                 return;
             }
-            for (Map.Entry<Character, Node> child : node.children.entrySet()) {
-                Node cn = child.getValue();
-                if (cn.word) {
+            for (Node child : node.children) {
+                if (child == null) {
+                    continue;
+                }
+                if (child.word) {
                     ref.count++;
                 }
-                allChildren(cn, ref);
+                allChildren(child, ref);
             }
         }
     }
