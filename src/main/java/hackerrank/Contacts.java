@@ -1,13 +1,13 @@
-package hackerrank.ctci;
+package hackerrank;
 
 import java.util.Scanner;
 
 /**
- * https://www.hackerrank.com/challenges/ctci-contacts
+ * https://www.hackerrank.com/challenges/contacts
  */
 public class Contacts {
     private static class Node {
-        private final Node[] children = new Node[26];
+        private final Contacts.Node[] children = new Contacts.Node[26];
         private boolean word;
         private int count;
     }
