@@ -10,4 +10,10 @@ public class ContactsTest {
         System.setIn(new FileInputStream("src/test/resources/ctci/contacts/test1.txt"));
         Contacts.main(new String[]{});
     }
+
+    @Test
+    public void test2() throws Exception {
+        System.setIn(new FileInputStream("src/test/resources/ctci/contacts/test2.txt"));
+        Contacts.main(new String[]{});
+    }
 }

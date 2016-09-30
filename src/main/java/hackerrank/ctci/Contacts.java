@@ -58,7 +58,7 @@ public class Contacts {
             char c = str.charAt(idx);
             if (node.children.containsKey(c)) {
                 Node child = node.children.get(c);
-                if (child.word) {
+                if (idx == str.length() - 1 && child.word) {
                     words.add(word + c);
                 }
                 find(str, child, idx + 1, word + c, words);
