@@ -10,4 +10,10 @@ public class TwoDArrayDSTest {
         System.setIn(new FileInputStream("src/test/resources/2d-arrays-ds/test1.txt"));
         TwoDArrayDS.main(new String[]{});
     }
+
+    @Test
+    public void test2() throws Exception {
+        System.setIn(new FileInputStream("src/test/resources/2d-arrays-ds/test2.txt"));
+        TwoDArrayDS.main(new String[]{});
+    }
 }
