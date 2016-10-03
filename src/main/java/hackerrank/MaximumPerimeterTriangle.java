@@ -1,5 +1,6 @@
 package hackerrank;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -7,7 +8,16 @@ import java.util.Scanner;
  */
 public class MaximumPerimeterTriangle {
     private static void maxPerimeterTriangle(int[] array) {
+        Arrays.sort(array);
+        int a = array[0];
+        int b = array[1];
+        int c = array[array.length - 1];
         // TODO
+        if (a + b > c) {
+            System.out.println(a + " " + b + " " + c);
+        } else {
+            System.out.println("-1");
+        }
     }
 
     public static void main(String[] args) {
