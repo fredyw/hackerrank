@@ -9,12 +9,12 @@ import java.util.Scanner;
 public class MaximumPerimeterTriangle {
     private static void maxPerimeterTriangle(int[] array) {
         Arrays.sort(array);
-        int a = array[0];
-        int b = array[1];
-        int c = array[array.length - 1];
-        // TODO
-        if (a + b > c) {
-            System.out.println(a + " " + b + " " + c);
+        int i = array.length;
+        while (i - 3 >= 0 && array[i - 3] + array[i - 2] <= array[i - 1]) {
+            i--;
+        }
+        if (i - 3 >= 0) {
+            System.out.println(array[i - 3] + " " + array[i - 2] + " " + array[i - 1]);
         } else {
             System.out.println("-1");
         }
