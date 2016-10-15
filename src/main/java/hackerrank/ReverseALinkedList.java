@@ -13,8 +13,25 @@ public class ReverseALinkedList {
         }
     }
 
+    private static class NodeResult {
+        Node head;
+        Node node;
+    }
+
     public static Node reverse(Node head) {
-        // TODO
-        return null;
+        NodeResult result = new NodeResult();
+        reverse(head, result);
+        return result.head;
+    }
+
+    public static Node reverse(Node head, NodeResult result) {
+        if (head.next == null) {
+            result.head = head;
+            return head;
+        }
+        Node node = reverse(head.next, result);
+        node.next = head;
+        head.next = null;
+        return head;
     }
 }

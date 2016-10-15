@@ -4,6 +4,7 @@ import hackerrank.ReverseALinkedList.Node;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 public class ReverseALinkedListTest {
     @Test
@@ -20,5 +21,6 @@ public class ReverseALinkedListTest {
         assertEquals(3, head.next.next.data);
         assertEquals(2, head.next.next.next.data);
         assertEquals(1, head.next.next.next.next.data);
+        assertNull(head.next.next.next.next.next);
     }
 }
